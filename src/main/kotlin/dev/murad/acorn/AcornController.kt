@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 class AcornController {
 
     @PostMapping("/auth")
-    fun auth(@RequestBody account: Account): MutableList<EnrolledCourse>? {
+    fun auth(account: Account): MutableList<EnrolledCourse>? {
         val acorn = Acorn(account.utorid, account.password)
         try {
             acorn.doLogin()
