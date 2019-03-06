@@ -1,4 +1,4 @@
-package dev.murad.acorn
+package dev.murad.acorn.auth
 import com.fasterxml.jackson.annotation.JsonCreator
 
 
