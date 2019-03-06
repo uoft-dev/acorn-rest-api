@@ -4,6 +4,7 @@ import java.security.KeyPair
 import java.security.KeyPairGenerator
 import java.security.PrivateKey
 import java.security.PublicKey
+import java.util.*
 import javax.crypto.Cipher
 
 class Encryption {
@@ -11,22 +12,26 @@ class Encryption {
     private var keygen: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
     private var pair: KeyPair = keygen.generateKeyPair()
 
-    var privateKey: PrivateKey = pair.private
-        private set
+    private var privateKey: PrivateKey = pair.private
+    private var publicKey: PublicKey = pair.public
 
-    var publicKey: PublicKey = pair.public
+    var pubkey: String = Base64.getEncoder().encodeToString(publicKey.encoded)
         private set
 
     private var cipher: Cipher = Cipher.getInstance("RSA")
 
-    fun decrypt(payload: ByteArray): ByteArray {
+    fun decrypt(payload: String): String {
         this.cipher.init(Cipher.DECRYPT_MODE, privateKey)
-        return this.cipher.doFinal(payload)
+
+        val p: ByteArray = Base64.getDecoder().decode(payload)
+        return String(this.cipher.doFinal(p))
     }
 
-    fun encrypt(payload: ByteArray): ByteArray {
+    fun encrypt(payload: String): String {
         this.cipher.init(Cipher.ENCRYPT_MODE, publicKey)
-        return this.cipher.doFinal(payload);
+
+        val p: ByteArray = Base64.getDecoder().decode(payload);
+        return String(this.cipher.doFinal(p))
     }
 
 }

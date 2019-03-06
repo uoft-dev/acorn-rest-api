@@ -14,7 +14,7 @@ class AcornController {
     @PostMapping("/auth")
     fun auth(account: Account): MutableList<EnrolledCourse>? {
 
-        val password = String(enc.decrypt(account.password.toByteArray()))
+        val password = enc.decrypt(account.password)
 
         val acorn = Acorn(account.utorid, password)
         try {
@@ -22,11 +22,14 @@ class AcornController {
         } catch (e: LoginFailedException) {
             error(e.localizedMessage)
         }
+
         return (acorn.courseManager.appliedCourses)
     }
 
     @GetMapping("/auth/key")
-    fun authKey(): ByteArray {
-        return enc.publicKey.encoded
+    fun authKey(): String {
+        return "-----BEGIN PUBLIC KEY-----\n${enc.pubkey}\n-----END PUBLIC KEY-----"
+
+
     }
 }
