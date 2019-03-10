@@ -2,7 +2,7 @@
 ![Made with Java](https://img.shields.io/badge/Made%20with-Java-green.svg?style=flat-square&logo=Java)
 ![Made with Kotlin](https://img.shields.io/badge/-Kotlin-green.svg?style=flat-square&logo=kotlin)
 ![Version](https://img.shields.io/badge/Version-1.0.1-green.svg?style=flat-square)
-![Test Here](https://img.shields.io/badge/Test-Here-informational.svg?style=flat-square&link=https://acorn-rest.herokuapp.com/auth)
+[![Test Here](https://img.shields.io/badge/Test-Here-informational.svg?style=flat-square)](https://acorn-rest.herokuapp.com/auth)
 
 A REST API to fetch currently enrolled courses for UofT Acorn Students.
 
