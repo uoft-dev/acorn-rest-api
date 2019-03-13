@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*
 import java.lang.RuntimeException
 
 @RestController
-class AcornController {
+@RequestMapping("/courses")
+class CourseController {
 
     @PostMapping("/enrolled")
     fun enrolled(account: Account): MutableList<EnrolledCourse>? {
