@@ -36,31 +36,6 @@ class CourseController {
         return (acorn.courseManager.plannedCourses)
     }
 
-    @PostMapping("/transcript")
-    fun transcript(account: Account): String? {
-        val acorn = Acorn(account.utorid, account.password)
-
-        try {
-            acorn.doLogin()
-        } catch (e: RuntimeException) {
-            throw AuthException("Authentication Error")
-        }
-
-        return (acorn.gradeManager.gradeHtml)
-    }
-
-    @PostMapping("/registrations")
-    fun registrations(account: Account): MutableList<String>? {
-        val acorn = Acorn(account.utorid, account.password)
-
-        try {
-            acorn.doLogin()
-        } catch (e: RuntimeException) {
-            throw AuthException("Authentication Error")
-        }
-
-        return (acorn.registrationManager.eligibleRegistrations)
-    }
 
 
 

@@ -8,8 +8,14 @@ A REST API to fetch currently enrolled courses for UofT Acorn Students.
 
 Uses [this](https://github.com/LesterLyu/AcornAPI) acorn API, written in java
 
+API Documentation at `/swagger-ui.html`
 
-`endpoint`: `/auth`
+Endpoints:
+
+`/courses/enrolled`
+`/courses/planned`
+`/registrations/eligible`
+`/grades/transcript`
 
 `method`: `POST`
 
