@@ -1,17 +1,16 @@
 package dev.murad.acorn
 
 import auth.Acorn
-import entity.enrol.EnrolledCourse
-import exception.LoginFailedException
 import org.springframework.web.bind.annotation.*
-import java.lang.NullPointerException
 import java.lang.RuntimeException
 
 @RestController
-class AcornController {
+@RequestMapping("/registrations")
+class RegistrationsController {
 
-    @PostMapping("/auth")
-    fun auth(account: Account): MutableList<EnrolledCourse>? {
+
+    @PostMapping("/eligible")
+    fun eligible(account: Account): MutableList<String>? {
         val acorn = Acorn(account.utorid, account.password)
 
         try {
@@ -20,7 +19,6 @@ class AcornController {
             throw AuthException("Authentication Error")
         }
 
-        return (acorn.courseManager.appliedCourses)
+        return (acorn.registrationManager.eligibleRegistrations)
     }
-
 }
